@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace HandsOn.Console.SqliteDb.Data;
 
@@ -12,6 +12,6 @@ public sealed class HandsOnDbContext : DbContext
     
     public DbSet<Employee> Employees { get; set; }
     
-    protected override void OnConfiguring(DbContextOptionsBuilder options) 
-        => options.UseSqlite($"Data Source={DbName}");
+    protected override void OnConfiguring(DbContextOptionsBuilder options) => 
+        options.UseSqlite($"Data Source={DbName}");
 }
