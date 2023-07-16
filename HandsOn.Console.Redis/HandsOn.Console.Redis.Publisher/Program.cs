@@ -1,4 +1,4 @@
-﻿Console.WriteLine("Console application with Redis - Publisher \r\n");
+﻿Console.WriteLine("Console application with Redis - Publisher\r\n");
 
 await using var redis = await ConnectionMultiplexer.ConnectAsync("localhost");
 var publisher = redis.GetSubscriber();
