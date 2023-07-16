@@ -1,8 +1,8 @@
 namespace HandsOn.Console.Redis.Tests;
 
-public class CounterTests
+public class CounterTests : IDisposable
 {
-    private const string ConnectionString = "localhost:6379";
+    private const string ConnectionString = "localhost";
     
     private readonly ConnectionMultiplexer _redis;
     private readonly IDatabase _db;
@@ -14,7 +14,7 @@ public class CounterTests
     }
 
     [Fact]
-    public async Task StringIncrement_SetKeyWithInitialValue1()
+    public async Task IncrementWillBeSetToOneWhenKeyDoesntExists()
     {
         var key = Guid.NewGuid().ToString();
         
@@ -26,7 +26,7 @@ public class CounterTests
     }
     
     [Fact]
-    public async Task StringIncrement_IncrementsValueBy1()
+    public async Task IncrementIsOneByDefault()
     {
         var key = Guid.NewGuid().ToString();
         
@@ -38,7 +38,7 @@ public class CounterTests
     }
     
     [Fact]
-    public async Task StringIncrement_IncrementsValue_ByValueProvidedInParameter()
+    public async Task IncrementCanBeSetInParameter()
     {
         var key = Guid.NewGuid().ToString();
         const int incrementBy = 5;
@@ -51,7 +51,7 @@ public class CounterTests
     }
     
     [Fact]
-    public async Task StringDecrement_SetKeyWithInitialValue1()
+    public async Task DecrementWillBeSetToMinusOneWhenKeyDoesntExists()
     {
         var key = Guid.NewGuid().ToString();
         
@@ -63,19 +63,18 @@ public class CounterTests
     }
     
     [Fact]
-    public async Task StringDecrement_DecrementsValueBy1()
+    public async Task DecrementIsMinusOneByDefault()
     {
         var key = Guid.NewGuid().ToString();
         
-        await _db.StringIncrementAsync(key);
         await _db.StringDecrementAsync(key);
         
         var value = await _db.StringGetAsync(key);
-        value.Should().Be("0");
+        value.Should().Be("-1");
     }
     
     [Fact]
-    public async Task StringDecrement_DecrementsValue_ByValueProvidedInParameter()
+    public async Task DecrementCanBeSetInParameter()
     {
         var key = Guid.NewGuid().ToString();
         const int decrementBy = 5;

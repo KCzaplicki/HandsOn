@@ -2,7 +2,7 @@ namespace HandsOn.Console.Redis.Tests;
 
 public class TransactionsTests
 {
-    private const string ConnectionString = "localhost:6379";
+    private const string ConnectionString = "localhost";
     
     private readonly ConnectionMultiplexer _redis;
     private readonly IDatabase _db;
@@ -14,7 +14,7 @@ public class TransactionsTests
     }
 
     [Fact]
-    public async Task Execute_ExecutesOperationsAtomically()
+    public async Task TransactionSetValuesAtomicallyOnExecute()
     {
         var key1 = Guid.NewGuid().ToString();
         var key2 = Guid.NewGuid().ToString();
@@ -29,7 +29,7 @@ public class TransactionsTests
     }
     
     [Fact]
-    public async Task Transaction_WithoutExecute_DiscardsChanges()
+    public async Task TransactionWithoutExecuteDiscardsChanges()
     {
         var key1 = Guid.NewGuid().ToString();
         var key2 = Guid.NewGuid().ToString();
@@ -43,7 +43,7 @@ public class TransactionsTests
     }
     
     [Fact]
-    public async Task CreateTransaction_CanCreateMultipleTransactions()
+    public async Task MultipleTransactionsCanBeCreated()
     {
         var key1 = Guid.NewGuid().ToString();
         var key2 = Guid.NewGuid().ToString();
@@ -59,7 +59,7 @@ public class TransactionsTests
     }
     
     [Fact]
-    public async Task Execute_LastTransactionChangesOverridesPreviousChanges()
+    public async Task LastTransactionChangesOverridesPreviousChanges()
     {
         var key1 = Guid.NewGuid().ToString();
         var key2 = Guid.NewGuid().ToString();

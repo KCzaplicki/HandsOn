@@ -2,7 +2,7 @@ namespace HandsOn.Console.Redis.Tests;
 
 public class CacheTests : IDisposable
 {
-    private const string ConnectionString = "localhost:6379";
+    private const string ConnectionString = "localhost";
 
     private const string Value = "value";
     
@@ -16,7 +16,7 @@ public class CacheTests : IDisposable
     }
     
     [Fact]
-    public async Task StringSet_KeyIsSetToNull_AfterExpiryTime()
+    public async Task KeyValueIsSetToNullAfterExpiration()
     {
         var key = Guid.NewGuid().ToString();
         var expiryTime = TimeSpan.FromSeconds(2);
@@ -32,7 +32,7 @@ public class CacheTests : IDisposable
     }
 
     [Fact]
-    public async Task StringGetSetExpiry_UpdatesExpirationTime()
+    public async Task ExpirationTimeCanBeUpdated()
     {
         var key = Guid.NewGuid().ToString();
         var expiryTime = TimeSpan.FromSeconds(2);
@@ -49,7 +49,7 @@ public class CacheTests : IDisposable
     }
 
     [Fact]
-    public async Task StringSet_WithWhenNotExists_IgnoreSetNewValue_When_KeyAlreadyExists()
+    public async Task SetNewValueCanBeIgnoredWhenKeyAlreadyExists()
     {
         var key = Guid.NewGuid().ToString();
         await _db.StringSetAsync(key, Value, null, When.Always);
@@ -62,7 +62,7 @@ public class CacheTests : IDisposable
     }
     
     [Fact]
-    public async Task HashSet_StoreHashedKeyValues()
+    public async Task CanStoreHashedKeyValues()
     {
         var key = Guid.NewGuid().ToString();
         var hashKey = Guid.NewGuid().ToString();
