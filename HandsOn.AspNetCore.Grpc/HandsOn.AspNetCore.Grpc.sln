@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.AspNetCore.Grpc.ServiceA", "HandsOn.AspNetCore.Grpc.ServiceA\HandsOn.AspNetCore.Grpc.ServiceA.csproj", "{1D17C6F2-AAB5-4C4E-A382-D7F695BDBE6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.AspNetCore.Grpc.ServiceB", "HandsOn.AspNetCore.Grpc.ServiceB\HandsOn.AspNetCore.Grpc.ServiceB.csproj", "{31005311-8455-4F79-B5F8-ADC75E8EC41D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D17C6F2-AAB5-4C4E-A382-D7F695BDBE6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D17C6F2-AAB5-4C4E-A382-D7F695BDBE6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D17C6F2-AAB5-4C4E-A382-D7F695BDBE6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D17C6F2-AAB5-4C4E-A382-D7F695BDBE6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31005311-8455-4F79-B5F8-ADC75E8EC41D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31005311-8455-4F79-B5F8-ADC75E8EC41D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31005311-8455-4F79-B5F8-ADC75E8EC41D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31005311-8455-4F79-B5F8-ADC75E8EC41D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
