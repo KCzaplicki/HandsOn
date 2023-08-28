@@ -85,8 +85,8 @@ namespace HandsOn.Console.EFCore.DataAccess.Migrations
                 {
                     ReviewId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Vote = table.Column<int>(type: "int", nullable: false),
-                    BookId = table.Column<int>(type: "int", nullable: true)
+                    Rating = table.Column<int>(type: "int", nullable: false),
+                    BookId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -95,7 +95,8 @@ namespace HandsOn.Console.EFCore.DataAccess.Migrations
                         name: "FK_Reviews_Books_BookId",
                         column: x => x.BookId,
                         principalTable: "Books",
-                        principalColumn: "BookId");
+                        principalColumn: "BookId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

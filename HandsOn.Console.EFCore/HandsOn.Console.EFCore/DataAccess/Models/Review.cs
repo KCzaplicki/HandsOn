@@ -4,5 +4,7 @@ public class Review
 {
     public int ReviewId { get; set; }
 
-    public int Vote { get; set; }
+    public int Rating { get; set; }
+    
+    public int BookId { get; set; }
 }

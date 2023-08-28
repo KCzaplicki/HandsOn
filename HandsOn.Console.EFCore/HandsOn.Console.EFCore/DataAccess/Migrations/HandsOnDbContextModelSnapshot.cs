@@ -129,10 +129,10 @@ namespace HandsOn.Console.EFCore.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReviewId"));
 
-                    b.Property<int?>("BookId")
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Vote")
+                    b.Property<int>("Rating")
                         .HasColumnType("int");
 
                     b.HasKey("ReviewId");
@@ -176,7 +176,9 @@ namespace HandsOn.Console.EFCore.DataAccess.Migrations
                 {
                     b.HasOne("HandsOn.Console.EFCore.DataAccess.Models.Book", null)
                         .WithMany("Reviews")
-                        .HasForeignKey("BookId");
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("HandsOn.Console.EFCore.DataAccess.Models.Book", b =>
