@@ -1,5 +1,4 @@
 using HandsOn.Console.EFCore.Tests.Queries.DataAccess;
-using HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HandsOn.Console.EFCore.Tests.Queries;
@@ -7,7 +6,7 @@ namespace HandsOn.Console.EFCore.Tests.Queries;
 // More about deferred query execution on 
 // https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/ef/language-reference/query-execution#deferred-query-execution
 
-public class DeferredExecutionTests
+public class DeferredExecutionTests : QueryTestBase
 {
     [Fact]
     public async Task ExecutionIsDeferredToCallToList()
@@ -150,47 +149,5 @@ public class DeferredExecutionTests
         
         _ = await query.AverageAsync(b => b.BlogId);
         commandVerifier.VerifyCalled(querySql);
-    }
-    
-    private static async Task CreateDatabaseAsync(HandsOnQueriesDbContext dbContext)
-    {
-        await dbContext.Database.EnsureDeletedAsync();
-        await dbContext.Database.EnsureCreatedAsync();
-        
-        await SeedDatabaseAsync(dbContext);
-    }
-    
-    private static async Task SeedDatabaseAsync(HandsOnQueriesDbContext dbContext)
-    {
-        var blog = new Blog
-        {
-            Name = "My Blog",
-            Description = "My Blog Description",
-            Posts = new List<Post>
-            {
-                new()
-                {
-                    Title = "My First Post",
-                    Content = "My First Post Content",
-                    PublishedOn = DateTime.UtcNow,
-                    Comments = new List<Comment>
-                    {
-                        new()
-                        {
-                            Message = "My First Comment",
-                            PublishedOn = DateTime.UtcNow
-                        },
-                        new()
-                        {
-                            Message = "My Second Comment",
-                            PublishedOn = DateTime.UtcNow
-                        }
-                    }
-                }
-            }
-        };
-        
-        dbContext.Blogs.Add(blog);
-        await dbContext.SaveChangesAsync();
     }
 }
