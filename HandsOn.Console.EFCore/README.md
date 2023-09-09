@@ -14,13 +14,14 @@ Queries
 - :white_check_mark: Compiled query
 - :x: AsNoTracking()
 - :x: Client/Server execution
-- :x: Loading strategies
+- :white_check_mark: Loading strategies
 - :x: Query translation limitations
 - :x: Raw SQL query
 - :x: EF.Functions
 - :x: Find
 - :x: Query caching
 - :x: Navigational properties
+- :x: Reload
 
 Write
 - :x: Entity state

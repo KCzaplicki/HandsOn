@@ -26,7 +26,7 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Post",
+                name: "Posts",
                 columns: table => new
                 {
                     PostId = table.Column<int>(type: "int", nullable: false)
@@ -62,7 +62,7 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_Comments_Post_PostId",
                         column: x => x.PostId,
-                        principalTable: "Post",
+                        principalTable: "Posts",
                         principalColumn: "PostId");
                 });
 
@@ -73,7 +73,7 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Post_BlogId",
-                table: "Post",
+                table: "Posts",
                 column: "BlogId");
         }
 
@@ -84,7 +84,7 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
                 name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "Post");
+                name: "Posts");
 
             migrationBuilder.DropTable(
                 name: "Blogs");

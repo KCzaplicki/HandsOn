@@ -5,29 +5,34 @@ namespace HandsOn.Console.EFCore.Tests.Queries;
 
 public class CommandVerifier : IDbCommandInterceptor
 {
-    public IList<string> Commands { get; } = new List<string>();
+    private IList<string> Commands { get; } = new List<string>();
 
     public DbDataReader ReaderExecuted(DbCommand command, CommandExecutedEventData eventData, DbDataReader result)
     {
-        Commands.Add(command.CommandText.Replace(Environment.NewLine, " "));
+        Commands.Add(TrimCommand(command.CommandText));
         return result;
     }
 
     public ValueTask<DbDataReader> ReaderExecutedAsync(DbCommand command, CommandExecutedEventData eventData, DbDataReader result,
-        CancellationToken cancellationToken = new CancellationToken())
+        CancellationToken cancellationToken = new())
     {
-        Commands.Add(command.CommandText.Replace(Environment.NewLine, " "));
+        Commands.Add(TrimCommand(command.CommandText));
         return ValueTask.FromResult(result);
     }
 
     public void VerifyCalled(string commandSql, int calledTimes = 1)
     {
-        var count = Commands.Count(c => c == commandSql);
+        var count = Commands.Count(c => c.Equals(TrimCommand(commandSql)));
         count.Should().Be(calledTimes);
     }
 
     public void VerifyNotCalled(string commandSql)
     {
         VerifyCalled(commandSql, 0);
+    }
+
+    private static string TrimCommand(string sqlCommand)
+    {
+        return sqlCommand.Replace(Environment.NewLine, string.Empty).Replace(" ", string.Empty);
     }
 }

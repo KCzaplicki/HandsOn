@@ -1,4 +1,4 @@
-namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models;
+namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Proxies;
 
 public class Post
 {
@@ -10,7 +10,7 @@ public class Post
 
     public DateTime PublishedOn { get; set; }
     
-    public Metadata Metadata { get; set; }
+    public virtual Metadata Metadata { get; set; }
 
-    public ICollection<Comment> Comments { get; set; }
+    public virtual ICollection<Comment> Comments { get; set; }
 }

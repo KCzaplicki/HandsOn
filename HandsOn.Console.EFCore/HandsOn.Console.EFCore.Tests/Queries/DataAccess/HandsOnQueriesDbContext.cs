@@ -26,9 +26,11 @@ public class HandsOnQueriesDbContext : DbContext
 
     public DbSet<Blog> Blogs { get; set; }
 
-    public DbSet<Post> Post { get; set; }
+    public DbSet<Post> Posts { get; set; }
 
     public DbSet<Comment> Comments { get; set; }
+    
+    public DbSet<Metadata> Metadata { get; set; }
 
     public IEnumerable<Blog> GetBlogsWithMinPosts(int postCount)
     {
@@ -37,7 +39,8 @@ public class HandsOnQueriesDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(ConnectionString);
-        optionsBuilder.AddInterceptors(_interceptor);
+        optionsBuilder
+            .UseSqlServer(ConnectionString)
+            .AddInterceptors(_interceptor);
     }
 }

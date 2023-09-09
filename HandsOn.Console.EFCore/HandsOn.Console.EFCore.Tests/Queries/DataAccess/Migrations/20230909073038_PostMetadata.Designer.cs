@@ -4,6 +4,7 @@ using HandsOn.Console.EFCore.Tests.Queries.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
 {
     [DbContext(typeof(HandsOnQueriesDbContext))]
-    partial class HandsOnQueriesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230909073038_PostMetadata")]
+    partial class PostMetadata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,7 +128,7 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Post");
                 });
 
             modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Comment", b =>
