@@ -12,7 +12,7 @@ Queries
 
 - :white_check_mark: Deferred query execution
 - :white_check_mark: Compiled query
-- :x: AsNoTracking()
+- :white_check_mark: AsNoTracking()
 - :x: Client/Server execution
 - :white_check_mark: Loading strategies
 - :x: Query translation limitations
@@ -22,6 +22,7 @@ Queries
 - :x: Query caching
 - :x: Navigational properties
 - :x: Reload
+- :x: Split queries
 
 Write
 - :x: Entity state

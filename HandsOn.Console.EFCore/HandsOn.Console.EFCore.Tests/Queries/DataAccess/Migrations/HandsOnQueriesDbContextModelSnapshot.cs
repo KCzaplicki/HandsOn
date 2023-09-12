@@ -22,6 +22,21 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("CategoryPost", b =>
+                {
+                    b.Property<int>("CategoriesCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CategoriesCategoryId", "PostId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("CategoryPost");
+                });
+
             modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Blog", b =>
                 {
                     b.Property<int>("BlogId")
@@ -41,6 +56,23 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
                     b.HasKey("BlogId");
 
                     b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Comment", b =>
@@ -126,6 +158,21 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
                     b.HasIndex("BlogId");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("CategoryPost", b =>
+                {
+                    b.HasOne("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Category", null)
+                        .WithMany()
+                        .HasForeignKey("CategoriesCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Post", null)
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Comment", b =>

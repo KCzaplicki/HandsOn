@@ -31,6 +31,8 @@ public class HandsOnQueriesDbContext : DbContext
     public DbSet<Comment> Comments { get; set; }
     
     public DbSet<Metadata> Metadata { get; set; }
+    
+    public DbSet<Category> Categories { get; set; }
 
     public IEnumerable<Blog> GetBlogsWithMinPosts(int postCount)
     {
@@ -42,5 +44,12 @@ public class HandsOnQueriesDbContext : DbContext
         optionsBuilder
             .UseSqlServer(ConnectionString)
             .AddInterceptors(_interceptor);
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Post>()
+            .HasMany(x => x.Categories)
+            .WithMany();
     }
 }

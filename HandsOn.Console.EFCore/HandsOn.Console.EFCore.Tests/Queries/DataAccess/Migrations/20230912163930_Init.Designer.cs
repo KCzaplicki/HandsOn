@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
 {
     [DbContext(typeof(HandsOnQueriesDbContext))]
-    [Migration("20230828181552_Init")]
+    [Migration("20230912163930_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -24,6 +24,21 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("CategoryPost", b =>
+                {
+                    b.Property<int>("CategoriesCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CategoriesCategoryId", "PostId");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("CategoryPost");
+                });
 
             modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Blog", b =>
                 {
@@ -44,6 +59,23 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
                     b.HasKey("BlogId");
 
                     b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CategoryId");
+
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Comment", b =>
@@ -69,6 +101,37 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
                     b.HasIndex("PostId");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Metadata", b =>
+                {
+                    b.Property<int>("MetadataId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MetadataId"));
+
+                    b.Property<int>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SeoDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SeoTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SeoWords")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MetadataId");
+
+                    b.HasIndex("PostId")
+                        .IsUnique();
+
+                    b.ToTable("Metadata");
                 });
 
             modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Post", b =>
@@ -97,7 +160,22 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("Post");
+                    b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("CategoryPost", b =>
+                {
+                    b.HasOne("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Category", null)
+                        .WithMany()
+                        .HasForeignKey("CategoriesCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Post", null)
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Comment", b =>
@@ -105,6 +183,15 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
                     b.HasOne("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Post", null)
                         .WithMany("Comments")
                         .HasForeignKey("PostId");
+                });
+
+            modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Metadata", b =>
+                {
+                    b.HasOne("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Post", null)
+                        .WithOne("Metadata")
+                        .HasForeignKey("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Metadata", "PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Post", b =>
@@ -122,6 +209,9 @@ namespace HandsOn.Console.EFCore.Tests.Queries.DataAccess.Migrations
             modelBuilder.Entity("HandsOn.Console.EFCore.Tests.Queries.DataAccess.Models.Post", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("Metadata")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

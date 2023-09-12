@@ -11,6 +11,8 @@ public class Post
     public DateTime PublishedOn { get; set; }
     
     public Metadata Metadata { get; set; }
+    
+    public ICollection<Category> Categories { get; set; }
 
     public ICollection<Comment> Comments { get; set; }
 }

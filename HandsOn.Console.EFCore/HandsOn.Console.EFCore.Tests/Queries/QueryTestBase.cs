@@ -17,41 +17,70 @@ public abstract class QueryTestBase
 
     protected virtual async Task SeedDatabaseAsync(HandsOnQueriesDbContext dbContext)
     {
-        var blog = new Blog
+        var categories = new Category[]
         {
-            Name = "My Blog",
-            Description = "My Blog Description",
-            Posts = new List<Post>
+            new()
             {
-                new()
+                Name = "My First Category"
+            },
+            new()
+            {
+                Name = "My Second Category"
+            }
+        };
+        
+        var blogs = new Blog[]
+        {
+            new()
+            {
+                Name = "My Blog",
+                Description = "My Blog Description",
+                Posts = new List<Post>
                 {
-                    Title = "My First Post",
-                    Content = "My First Post Content",
-                    PublishedOn = DateTime.UtcNow,
-                    Metadata = new Metadata
+                    new()
                     {
-                        SeoTitle = "My First Post Seo Title",
-                        SeoDescription = "My First Post Seo Description",
-                        SeoWords = "Post, Blog, First"
-                    },
-                    Comments = new List<Comment>
-                    {
-                        new()
+                        Title = "My First Post",
+                        Content = "My First Post Content",
+                        PublishedOn = DateTime.UtcNow,
+                        Metadata = new Metadata
                         {
-                            Message = "My First Comment",
-                            PublishedOn = DateTime.UtcNow
+                            SeoTitle = "My First Post Seo Title",
+                            SeoDescription = "My First Post Seo Description",
+                            SeoWords = "Post, Blog, First"
                         },
-                        new()
+                        Comments = new List<Comment>
                         {
-                            Message = "My Second Comment",
-                            PublishedOn = DateTime.UtcNow
-                        }
+                            new()
+                            {
+                                Message = "My First Comment",
+                                PublishedOn = DateTime.UtcNow
+                            },
+                            new()
+                            {
+                                Message = "My Second Comment",
+                                PublishedOn = DateTime.UtcNow
+                            }
+                        },
+                        Categories = categories
+                    },
+                    new ()
+                    {
+                        Title = "My Second Post",
+                        Content = "My Second Post Content",
+                        PublishedOn = DateTime.UtcNow,
+                        Metadata = new Metadata
+                        {
+                            SeoTitle = "My Second Post Seo Title",
+                            SeoDescription = "My Second Post Seo Description",
+                            SeoWords = "Post, Blog, Second"
+                        },
+                        Categories = categories
                     }
                 }
             }
         };
 
-        dbContext.Blogs.Add(blog);
+        await dbContext.Blogs.AddRangeAsync(blogs);
         await dbContext.SaveChangesAsync();
     }
 }
