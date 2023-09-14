@@ -22,7 +22,7 @@ Queries
 - :x: Query caching
 - :x: Navigational properties
 - :x: Reload
-- :x: Split queries
+- :white_check_mark: Split queries
 
 Write
 - :x: Entity state

@@ -74,7 +74,15 @@ public abstract class QueryTestBase
                             SeoDescription = "My Second Post Seo Description",
                             SeoWords = "Post, Blog, Second"
                         },
-                        Categories = categories
+                        Categories = categories,
+                        Comments = new List<Comment>
+                        {
+                            new()
+                            {
+                                Message = "My First Comment",
+                                PublishedOn = DateTime.UtcNow
+                            }
+                        }
                     }
                 }
             }
