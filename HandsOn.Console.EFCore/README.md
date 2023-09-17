@@ -13,7 +13,7 @@ Queries
 - :white_check_mark: Deferred query execution
 - :white_check_mark: Compiled query
 - :white_check_mark: AsNoTracking()
-- :x: Client/Server execution
+- :white_check_mark: Client/Server execution
 - :white_check_mark: Loading strategies
 - :x: Query translation limitations
 - :x: Raw SQL query
