@@ -43,3 +43,6 @@ msbuild.wrn
 
 # Logs
 **/Logs
+
+# Development settings
+appsettings.development.json
