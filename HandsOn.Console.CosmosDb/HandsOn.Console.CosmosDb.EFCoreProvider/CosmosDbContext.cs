@@ -1,5 +1,4 @@
 using HandsOn.Console.CosmosDb.EFCoreProvider.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
 
