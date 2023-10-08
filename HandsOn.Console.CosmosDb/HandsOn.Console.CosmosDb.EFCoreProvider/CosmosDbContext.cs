@@ -53,12 +53,15 @@ public class CosmosDbContext : DbContext
             .Entity<Blog>()
             .HasPartitionKey(x => x.BlogId)
             .HasNoDiscriminator()
-            .ToContainer("Blogs");
+            .ToContainer("Blogs")
+            .HasKey(x => x.Id);
         
         modelBuilder
             .Entity<Post>()
             .HasPartitionKey(x => x.BlogId)
             .HasNoDiscriminator()
-            .ToContainer("Posts");
+            .UseETagConcurrency()
+            .ToContainer("Posts")
+            .HasKey(x => x.Id);
     }
 }

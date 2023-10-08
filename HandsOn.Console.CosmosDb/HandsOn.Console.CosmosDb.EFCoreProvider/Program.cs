@@ -1,17 +1,13 @@
 ﻿using HandsOn.Console.CosmosDb.EFCoreProvider;
+using ConfigurationProvider = HandsOn.Console.CosmosDb.EFCoreProvider.ConfigurationProvider;
 
 Console.WriteLine("Console application with CosmosDB database and EF Core provider");
 
 var environmentName = Environment.GetEnvironmentVariable("APP_ENVIRONMENT");
 Console.WriteLine($"Application environment: {environmentName}\r\n");
 
-var configuration = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.json", false, true)
-    .AddJsonFile($"appsettings.{environmentName}.json", true, true)
-    .Build();
-var connectionString = configuration["ConnectionStrings:DefaultConnection"];
-
-var dbContext = new CosmosDbContext(connectionString);
+var configurationProvider = new ConfigurationProvider();
+await using var dbContext = new CosmosDbContext(configurationProvider.GetConnectionString());
 
 var dbCreated = await dbContext.Database.EnsureCreatedAsync();
 Console.WriteLine($"Database '{dbContext.DatabaseName}' {(dbCreated ? "created" : "already exists")}");
@@ -63,3 +59,4 @@ var deletedBlog = dbBlogs[1];
 dbContext.Blogs.Remove(deletedBlog);
 await dbContext.SaveChangesAsync();
 Console.WriteLine($"Blog '{deletedBlog.BlogId}' deleted");
+

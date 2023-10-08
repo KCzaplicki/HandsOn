@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.CosmosDb", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.CosmosDb.EFCoreProvider", "HandsOn.Console.CosmosDb.EFCoreProvider\HandsOn.Console.CosmosDb.EFCoreProvider.csproj", "{B389A5D7-43B3-407D-A324-6DC6CABC8C8C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.CosmosDB.EFCoreProvider.Tests", "HandsOn.Console.CosmosDB.EFCoreProvider.Tests\HandsOn.Console.CosmosDB.EFCoreProvider.Tests.csproj", "{ADB440C4-9BE0-4F01-A18A-0FE44FB7AADE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{B389A5D7-43B3-407D-A324-6DC6CABC8C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B389A5D7-43B3-407D-A324-6DC6CABC8C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B389A5D7-43B3-407D-A324-6DC6CABC8C8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADB440C4-9BE0-4F01-A18A-0FE44FB7AADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB440C4-9BE0-4F01-A18A-0FE44FB7AADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB440C4-9BE0-4F01-A18A-0FE44FB7AADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB440C4-9BE0-4F01-A18A-0FE44FB7AADE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
