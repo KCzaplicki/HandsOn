@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.AzureServiceBus.Queue.Sender", "HandsOn.Console.AzureServiceBus.Queue.Sender\HandsOn.Console.AzureServiceBus.Queue.Sender.csproj", "{F762A3D3-023F-48D6-836C-12615472EE55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.AzureServiceBus.Queue.Receiver", "HandsOn.Console.AzureServiceBus.Queue.Receiver\HandsOn.Console.AzureServiceBus.Queue.Receiver.csproj", "{CA501D9D-452B-4E5F-BEE7-26A4DDEF42CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F762A3D3-023F-48D6-836C-12615472EE55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F762A3D3-023F-48D6-836C-12615472EE55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F762A3D3-023F-48D6-836C-12615472EE55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F762A3D3-023F-48D6-836C-12615472EE55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA501D9D-452B-4E5F-BEE7-26A4DDEF42CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA501D9D-452B-4E5F-BEE7-26A4DDEF42CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA501D9D-452B-4E5F-BEE7-26A4DDEF42CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA501D9D-452B-4E5F-BEE7-26A4DDEF42CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

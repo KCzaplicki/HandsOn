@@ -7,9 +7,9 @@ var environmentName = Environment.GetEnvironmentVariable("APP_ENVIRONMENT");
 Console.WriteLine($"Application environment: {environmentName}\r\n");
 
 var configuration = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.json", false, true)
-    .AddJsonFile($"appsettings.{environmentName}.json", true, true)
-    .Build();
+                 .AddJsonFile("appsettings.json", false, true)
+                 .AddJsonFile($"appsettings.{environmentName}.json", true, true)
+                 .Build();
 
 var connectionString = configuration["ConnectionStrings:DefaultConnection"];
 var cosmosClient = new CosmosClient(connectionString);
