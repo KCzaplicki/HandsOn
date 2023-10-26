@@ -1,4 +1,6 @@
-﻿using Azure.Messaging.ServiceBus;
+﻿using System.Text.Json;
+using Azure.Messaging.ServiceBus;
+using HandsOn.Console.AzureServiceBus.Common.Models;
 using Microsoft.Extensions.Configuration;
 
 Console.WriteLine("Console Application with Azure Service Bus - Queue sender\r\n");
@@ -26,6 +28,23 @@ var message = new ServiceBusMessage(content)
 };
 await sender.SendMessageAsync(message);
 Console.WriteLine($"Text message '{content}' sent");
+
+var moneyTransferRequest = new MoneyTransferRequest
+{
+    SenderId = Guid.NewGuid().ToString(),
+    RecipientId = Guid.NewGuid().ToString(),
+    Value = 100.00,
+    Currency = "EUR",
+    RequestedAt = DateTime.UtcNow
+};
+var moneyTransferRequestJson = JsonSerializer.Serialize(moneyTransferRequest);
+var moneyTransferRequestMessage = new ServiceBusMessage(moneyTransferRequestJson)
+{
+    Subject = nameof(moneyTransferRequest),
+    ContentType = "application/json",
+};
+await sender.SendMessageAsync(moneyTransferRequestMessage);
+Console.WriteLine($"JSON message '{moneyTransferRequestJson}' sent");
 
 await sender.DisposeAsync();
 await client.DisposeAsync();

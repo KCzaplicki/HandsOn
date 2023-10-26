@@ -23,4 +23,8 @@
       </None>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\HandsOn.Console.AzureServiceBus.Common\HandsOn.Console.AzureServiceBus.Common.csproj" />
+    </ItemGroup>
+
 </Project>
