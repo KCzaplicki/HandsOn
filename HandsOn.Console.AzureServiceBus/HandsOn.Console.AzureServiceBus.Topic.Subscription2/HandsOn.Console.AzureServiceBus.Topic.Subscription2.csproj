@@ -6,11 +6,15 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.16.2" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.16.2" />
-      <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+        <ProjectReference Include="..\HandsOn.Console.AzureServiceBus.Common\HandsOn.Console.AzureServiceBus.Common.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -21,9 +25,4 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\HandsOn.Console.AzureServiceBus.Common\HandsOn.Console.AzureServiceBus.Common.csproj" />
-    </ItemGroup>
-
 </Project>

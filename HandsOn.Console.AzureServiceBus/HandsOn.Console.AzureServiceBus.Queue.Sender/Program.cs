@@ -1,7 +1,4 @@
-﻿using System.Text.Json;
-using Azure.Messaging.ServiceBus;
-using HandsOn.Console.AzureServiceBus.Common.Models;
-using Microsoft.Extensions.Configuration;
+﻿using HandsOn.Console.AzureServiceBus.Common.Models;
 
 Console.WriteLine("Console Application with Azure Service Bus - Queue sender\r\n");
 
@@ -11,7 +8,6 @@ var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", false, true)
     .AddJsonFile($"appsettings.{environmentName}.json", true, true)
     .Build();
-
 
 var connectionString = configuration["ConnectionStrings:DefaultConnection"];
 var client = new ServiceBusClient(connectionString);
