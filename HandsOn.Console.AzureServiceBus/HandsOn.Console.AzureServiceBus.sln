@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.AzureServic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.AzureServiceBus.Topic.Subscription2", "HandsOn.Console.AzureServiceBus.Topic.Subscription2\HandsOn.Console.AzureServiceBus.Topic.Subscription2.csproj", "{3916780B-2CDE-4458-A662-88E0E0BB5ABB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.AzureServiceBus.Queue.Tests", "HandsOn.Console.AzureServiceBus.Queue.Tests\HandsOn.Console.AzureServiceBus.Queue.Tests.csproj", "{5E322D98-4B90-4E7E-96AE-B7706D774793}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{3916780B-2CDE-4458-A662-88E0E0BB5ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3916780B-2CDE-4458-A662-88E0E0BB5ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3916780B-2CDE-4458-A662-88E0E0BB5ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E322D98-4B90-4E7E-96AE-B7706D774793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E322D98-4B90-4E7E-96AE-B7706D774793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E322D98-4B90-4E7E-96AE-B7706D774793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E322D98-4B90-4E7E-96AE-B7706D774793}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
