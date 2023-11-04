@@ -39,6 +39,7 @@ public class RequestResponseTests : BaseTest
         // 2. Request message is received from the queue
         _requestSessionReceiver = await Client.AcceptSessionAsync(QueueName, requestSessionId);
         var requestMessage = await _requestSessionReceiver.ReceiveMessageAsync();
+        await _requestSessionReceiver.CompleteMessageAsync(requestMessage);
         
         // 3. Response message is send to the queue with SessionId property set
         await _sender.SendMessageAsync(new ServiceBusMessage(responseMessageBody)
@@ -49,6 +50,7 @@ public class RequestResponseTests : BaseTest
         // 4. Response message is received from the session
         _responseSessionReceiver = await Client.AcceptSessionAsync(QueueName, responseSessionId);
         var responseMessage = await _responseSessionReceiver.ReceiveMessageAsync();
+        await _responseSessionReceiver.CompleteMessageAsync(responseMessage);
 
         requestMessage.Body.ToString().Should().Be(requestMessageBody);
         requestMessage.ReplyToSessionId.Should().Be(responseSessionId);
