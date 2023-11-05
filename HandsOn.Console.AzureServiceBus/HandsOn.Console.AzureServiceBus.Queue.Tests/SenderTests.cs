@@ -7,7 +7,7 @@ public class SenderTests : BaseTest
 
     public SenderTests()
     {
-        _sender = Client.CreateSender(QueueName);
+        _sender = Client.CreateSender(SessionQueueName);
     }
     
     public override async ValueTask DisposeAsync()
@@ -25,7 +25,7 @@ public class SenderTests : BaseTest
         var sessionId = Guid.NewGuid().ToString();
         var receiveMessageTimeout = TimeSpan.FromSeconds(1);
         var scheduledEnqueueDelay = TimeSpan.FromSeconds(5);
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
         
         await _sender.SendMessageAsync(new ServiceBusMessage(messageBody)
         {
@@ -59,7 +59,7 @@ public class SenderTests : BaseTest
         
         await _sender.SendMessagesAsync(messageBatch);
 
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
 
         var message1 = await _sessionReceiver.ReceiveMessageAsync();
         await _sessionReceiver.CompleteMessageAsync(message1);
@@ -88,7 +88,7 @@ public class SenderTests : BaseTest
             new ServiceBusMessage(message3Body) { SessionId = sessionId }
         });
 
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
 
         var message1 = await _sessionReceiver.ReceiveMessageAsync();
         await _sessionReceiver.CompleteMessageAsync(message1);
@@ -148,7 +148,7 @@ public class SenderTests : BaseTest
             TimeToLive = timeToLive
         });
 
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
 
         await Task.Delay(timeToLive.Add(receiveMessageTimeout));
         

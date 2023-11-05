@@ -1,11 +1,11 @@
-using Azure.Messaging.ServiceBus;
 using Microsoft.Extensions.Configuration;
 
 namespace HandsOn.Console.AzureServiceBus.Queue.Tests;
 
 public abstract class BaseTest : IAsyncDisposable
 {
-    protected readonly string QueueName;
+    protected readonly string SessionQueueName;
+    protected readonly string SimpleQueueName;
     
     protected ServiceBusClient Client;
     
@@ -18,7 +18,8 @@ public abstract class BaseTest : IAsyncDisposable
             .Build();
         
         var connectionString = configuration["ConnectionStrings:DefaultConnection"];
-        QueueName = configuration["Queues:TestQueue"];
+        SessionQueueName = configuration["Queues:SessionTestQueue"];
+        SimpleQueueName = configuration["Queues:SimpleTestQueue"];
         
         Client = new ServiceBusClient(connectionString);
     }

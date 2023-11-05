@@ -7,7 +7,7 @@ public class DeadLetterQueueTests : BaseTest
     
     public DeadLetterQueueTests()
     {
-        _sender = Client.CreateSender(QueueName);
+        _sender = Client.CreateSender(SessionQueueName);
     }
     
     public override async ValueTask DisposeAsync()
@@ -26,11 +26,11 @@ public class DeadLetterQueueTests : BaseTest
         
         await _sender.SendMessageAsync(new ServiceBusMessage(messageBody) { SessionId = sessionId });
         
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
         var message = await _sessionReceiver.ReceiveMessageAsync();
         await _sessionReceiver.DeadLetterMessageAsync(message);
         
-        var deadLetterReceiver = Client.CreateReceiver(QueueName, new ServiceBusReceiverOptions
+        var deadLetterReceiver = Client.CreateReceiver(SessionQueueName, new ServiceBusReceiverOptions
         {
             SubQueue = SubQueue.DeadLetter
         });

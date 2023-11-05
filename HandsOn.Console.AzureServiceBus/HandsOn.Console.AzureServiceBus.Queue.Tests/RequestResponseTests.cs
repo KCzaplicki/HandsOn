@@ -9,7 +9,7 @@ public class RequestResponseTests : BaseTest
 
     public RequestResponseTests()
     {
-        _sender = Client.CreateSender(QueueName);
+        _sender = Client.CreateSender(SessionQueueName);
     }
 
     public override async ValueTask DisposeAsync()
@@ -37,7 +37,7 @@ public class RequestResponseTests : BaseTest
         });
         
         // 2. Request message is received from the queue
-        _requestSessionReceiver = await Client.AcceptSessionAsync(QueueName, requestSessionId);
+        _requestSessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, requestSessionId);
         var requestMessage = await _requestSessionReceiver.ReceiveMessageAsync();
         await _requestSessionReceiver.CompleteMessageAsync(requestMessage);
         
@@ -48,7 +48,7 @@ public class RequestResponseTests : BaseTest
         });
         
         // 4. Response message is received from the session
-        _responseSessionReceiver = await Client.AcceptSessionAsync(QueueName, responseSessionId);
+        _responseSessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, responseSessionId);
         var responseMessage = await _responseSessionReceiver.ReceiveMessageAsync();
         await _responseSessionReceiver.CompleteMessageAsync(responseMessage);
 

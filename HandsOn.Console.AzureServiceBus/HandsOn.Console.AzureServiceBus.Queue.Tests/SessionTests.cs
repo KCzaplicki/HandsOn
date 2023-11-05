@@ -7,7 +7,7 @@ public class SessionTests : BaseTest
 
     public SessionTests()
     {
-        _sender = Client.CreateSender(QueueName);
+        _sender = Client.CreateSender(SessionQueueName);
     }
 
     public override async ValueTask DisposeAsync()
@@ -25,7 +25,7 @@ public class SessionTests : BaseTest
         var message2Body = "message 2";
         var message3Body = "message 3";
         var sessionId = Guid.NewGuid().ToString();
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
 
         await SendMessageAsync(message1Body, sessionId);
         await SendMessageAsync(message2Body, sessionId);
@@ -46,7 +46,7 @@ public class SessionTests : BaseTest
         var message1Body = "message 1";
         var message2Body = "message 2";
         var sessionId = Guid.NewGuid().ToString();
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
         
         await SendMessageAsync(message1Body, sessionId);
         await SendMessageAsync(message2Body, Guid.NewGuid().ToString());
@@ -62,9 +62,9 @@ public class SessionTests : BaseTest
     public async Task OnlyOneSessionReceiverCanBeOpenSimultaneously()
     {
         var sessionId = Guid.NewGuid().ToString();
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
             
-        Func<Task> act = async () => await Client.AcceptSessionAsync(QueueName, sessionId);
+        Func<Task> act = async () => await Client.AcceptSessionAsync(SessionQueueName, sessionId);
         await act.Should().ThrowAsync<ServiceBusException>();
     }
     
@@ -84,14 +84,14 @@ public class SessionTests : BaseTest
         
         await Task.Run(async () =>
         {
-            _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId1);
+            _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId1);
             message1 = await ReceiveMessageAsync();
             await _sessionReceiver.SetSessionStateAsync(new BinaryData(sessionStateData));
             await _sessionReceiver.CloseAsync();
         });
         await Task.Run(async () =>
         {
-            _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId1);
+            _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId1);
             sessionState = await _sessionReceiver.GetSessionStateAsync();
             message2 = await ReceiveMessageAsync();
         });

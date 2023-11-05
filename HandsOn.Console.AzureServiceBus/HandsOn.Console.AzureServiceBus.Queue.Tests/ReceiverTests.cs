@@ -7,7 +7,7 @@ public class ReceiverTests : BaseTest
     
     public ReceiverTests()
     {
-        _sender = Client.CreateSender(QueueName);
+        _sender = Client.CreateSender(SessionQueueName);
     }
     
     public override async ValueTask DisposeAsync()
@@ -33,7 +33,7 @@ public class ReceiverTests : BaseTest
         await _sender.SendMessageAsync(new ServiceBusMessage(message2Body) { SessionId = sessionId });
         await _sender.SendMessageAsync(new ServiceBusMessage(message3Body) { SessionId = sessionId });
         
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
         var messages = await _sessionReceiver.ReceiveMessagesAsync(maxMessages, receiveMessagesTimeout);
 
         foreach (var message in messages)
@@ -55,7 +55,7 @@ public class ReceiverTests : BaseTest
         
         await _sender.SendMessageAsync(new ServiceBusMessage(messageBody) { SessionId = sessionId });
         
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId, new ServiceBusSessionReceiverOptions
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId, new ServiceBusSessionReceiverOptions
         {
             ReceiveMode = ServiceBusReceiveMode.ReceiveAndDelete,
         });
@@ -73,7 +73,7 @@ public class ReceiverTests : BaseTest
         
         await _sender.SendMessageAsync(new ServiceBusMessage(messageBody) { SessionId = sessionId });
         
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId, new ServiceBusSessionReceiverOptions
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId, new ServiceBusSessionReceiverOptions
         {
             ReceiveMode = ServiceBusReceiveMode.PeekLock,
         });
@@ -92,7 +92,7 @@ public class ReceiverTests : BaseTest
         
         await _sender.SendMessageAsync(new ServiceBusMessage(messageBody) { SessionId = sessionId });
         
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
         var message = await _sessionReceiver.PeekMessageAsync();
         
         message.Should().NotBeNull();
@@ -109,7 +109,7 @@ public class ReceiverTests : BaseTest
         
         await _sender.SendMessageAsync(new ServiceBusMessage(messageBody) { SessionId = sessionId });
         
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
         var message = await _sessionReceiver.PeekMessageAsync();
         
         Func<Task> act = async () => await _sessionReceiver.CompleteMessageAsync(message);
@@ -123,7 +123,7 @@ public class ReceiverTests : BaseTest
         var messageBody = "message";
         
         await _sender.SendMessageAsync(new ServiceBusMessage(messageBody) { SessionId = sessionId });
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
         
         var message = await _sessionReceiver.ReceiveMessageAsync();
         await _sessionReceiver.CompleteMessageAsync(message);
@@ -141,7 +141,7 @@ public class ReceiverTests : BaseTest
         var messageBody = "message";
         
         await _sender.SendMessageAsync(new ServiceBusMessage(messageBody) { SessionId = sessionId });
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
         
         var message = await _sessionReceiver.ReceiveMessageAsync();
         await _sessionReceiver.AbandonMessageAsync(message);
@@ -157,7 +157,7 @@ public class ReceiverTests : BaseTest
         var messageBody = "message";
         
         await _sender.SendMessageAsync(new ServiceBusMessage(messageBody) { SessionId = sessionId });
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
         
         var message = await _sessionReceiver.ReceiveMessageAsync();
         await _sessionReceiver.DeferMessageAsync(message);
@@ -174,7 +174,7 @@ public class ReceiverTests : BaseTest
         var messageBody = "message";
         
         await _sender.SendMessageAsync(new ServiceBusMessage(messageBody) { SessionId = sessionId });
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
         
         var message = await _sessionReceiver.ReceiveMessageAsync();
         await _sessionReceiver.DeadLetterMessageAsync(message);
@@ -190,7 +190,7 @@ public class ReceiverTests : BaseTest
         var messageBody = "message";
         
         await _sender.SendMessageAsync(new ServiceBusMessage(messageBody) { SessionId = sessionId });
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
         
         var message = await _sessionReceiver.ReceiveMessageAsync();
         await _sessionReceiver.DeferMessageAsync(message);
@@ -223,7 +223,7 @@ public class ReceiverTests : BaseTest
             MessageId = messageId
         });
         
-        _sessionReceiver = await Client.AcceptSessionAsync(QueueName, sessionId);
+        _sessionReceiver = await Client.AcceptSessionAsync(SessionQueueName, sessionId);
         
         for (var i = 0; i < deliveryMaxCount; i++)
         {
