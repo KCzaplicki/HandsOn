@@ -10,6 +10,14 @@ public class MessageDeduplicationTests : BaseTest
         _sender = Client.CreateSender(SimpleQueueName);
         _receiver = Client.CreateReceiver(SimpleQueueName);
     }
+    
+    public override async ValueTask DisposeAsync()
+    {
+        await _sender.DisposeAsync();
+        await _receiver.DisposeAsync();
+
+        await base.DisposeAsync();
+    }
 
     [Fact]
     public async Task MessageDeduplicationDetectsMessagesWithTheSameMessageId()
