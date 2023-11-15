@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.AzureServic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.AzureServiceBus.Queue.Tests", "HandsOn.Console.AzureServiceBus.Queue.Tests\HandsOn.Console.AzureServiceBus.Queue.Tests.csproj", "{5E322D98-4B90-4E7E-96AE-B7706D774793}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.AzureServiceBus.Topic.Tests", "HandsOn.Console.AzureServiceBus.Topic.Tests\HandsOn.Console.AzureServiceBus.Topic.Tests.csproj", "{DC4096BD-0540-4600-B7AC-AC9583A697D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{5E322D98-4B90-4E7E-96AE-B7706D774793}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E322D98-4B90-4E7E-96AE-B7706D774793}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E322D98-4B90-4E7E-96AE-B7706D774793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC4096BD-0540-4600-B7AC-AC9583A697D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC4096BD-0540-4600-B7AC-AC9583A697D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC4096BD-0540-4600-B7AC-AC9583A697D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC4096BD-0540-4600-B7AC-AC9583A697D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
