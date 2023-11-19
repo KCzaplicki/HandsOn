@@ -6,10 +6,10 @@ public abstract class BaseTest : IAsyncDisposable
 {
     protected readonly string TopicName;
     protected readonly string CorrelationFilterSubscriptionName;
-    protected readonly string ApplicationPropertyFilterSubscriptionName;
+    protected readonly string SqlFilterSubscriptionName;
     
     protected readonly ServiceBusClient Client;
-    
+
     protected BaseTest()
     {
         var environmentName = Environment.GetEnvironmentVariable("APP_ENVIRONMENT");
@@ -21,7 +21,7 @@ public abstract class BaseTest : IAsyncDisposable
         var connectionString = configuration["ConnectionStrings:DefaultConnection"];
         TopicName = configuration["Topics:BaseTopic"];
         CorrelationFilterSubscriptionName = configuration["Subscriptions:CorrelationFilterSubscription"];
-        ApplicationPropertyFilterSubscriptionName = configuration["Subscriptions:ApplicationPropertyFilterSubscription"];
+        SqlFilterSubscriptionName = configuration["Subscriptions:SqlFilterSubscription"];
         
         Client = new ServiceBusClient(connectionString);
     }
