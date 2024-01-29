@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: handson-aspnetcore-kubernetes-container
-        image: handson.aspnetcore.kubernetes:1.0.1
+        image: handson.aspnetcore.kubernetes:1.0.3
         ports:
         - containerPort: 80
         env:
@@ -22,3 +22,13 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
+        - name: APP_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: handson-aspnetcore-kubernetes-config-map
+              key: APP_NAME
+        - name: APP_VERSION
+          valueFrom:
+            configMapKeyRef:
+              name: handson-aspnetcore-kubernetes-config-map
+              key: APP_VERSION

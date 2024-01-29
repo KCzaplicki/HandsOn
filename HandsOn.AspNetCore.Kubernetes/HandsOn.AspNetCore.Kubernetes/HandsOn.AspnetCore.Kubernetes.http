@@ -1,0 +1,21 @@
+@baseUrl = http://localhost:30080
+
+@cacheKey = key1
+@cacheValue = value1
+
+### Get footprint
+GET {{baseUrl}}
+
+### Get environment values
+GET {{baseUrl}}/env
+
+### Set cache key
+POST {{baseUrl}}/cache/{{cacheKey}}
+
+{{cacheValue}}
+
+### Get cache key
+GET {{baseUrl}}/cache/{{cacheKey}}
+
+### Delete cache key
+DELETE {{baseUrl}}/cache/{{cacheKey}}
