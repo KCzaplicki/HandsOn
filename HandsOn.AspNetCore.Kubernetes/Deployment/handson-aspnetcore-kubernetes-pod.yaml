@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: handson-aspnetcore-kubernetes-pod
+  labels:
+    app: handson-aspnetcore-kubernetes-app
+spec:
+  containers:
+  - name: handson-aspnetcore-kubernetes-container
+    image: handson.aspnetcore.kubernetes:1.0.0
+    ports:
+    - containerPort: 80
