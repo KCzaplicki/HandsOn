@@ -1,0 +1,6 @@
+@HandsOn.AspNetCore.IntegrationTests_HostAddress = http://localhost:5095
+
+GET {{HandsOn.AspNetCore.IntegrationTests_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

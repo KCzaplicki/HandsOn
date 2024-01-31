@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.AspNetCore.IntegrationTests", "HandsOn.AspNetCore.IntegrationTests\HandsOn.AspNetCore.IntegrationTests.csproj", "{5BD9032E-204F-4285-A863-AF82763E5B2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.AspNetCore.Tests", "HandsOn.AspNetCore.Tests\HandsOn.AspNetCore.Tests.csproj", "{C3A5FA18-320F-4E84-89AE-DDEE152C6E29}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5BD9032E-204F-4285-A863-AF82763E5B2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BD9032E-204F-4285-A863-AF82763E5B2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BD9032E-204F-4285-A863-AF82763E5B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BD9032E-204F-4285-A863-AF82763E5B2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3A5FA18-320F-4E84-89AE-DDEE152C6E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A5FA18-320F-4E84-89AE-DDEE152C6E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A5FA18-320F-4E84-89AE-DDEE152C6E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A5FA18-320F-4E84-89AE-DDEE152C6E29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
