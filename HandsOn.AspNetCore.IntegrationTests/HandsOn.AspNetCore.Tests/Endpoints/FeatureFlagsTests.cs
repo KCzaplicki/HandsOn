@@ -134,7 +134,7 @@ public class FeatureFlagsTests : IClassFixture<CustomWebApplicationFactory<Progr
     }
     
     [Fact]
-    public async Task SetFeatureFlag_UpdatesFeatureFlag_WhenFeatureFlagExist()
+    public async Task SetFeatureFlag_UpdatesFeatureFlag_WhenFeatureFlagExists()
     {
         var featureFlag = new KeyValuePair<string, string>($"NewFeatureFlag-{Guid.NewGuid()}", "NewFeatureFlagValue");
         var featureFlagsManager = _factory.Services.GetService<IFeatureFlagsManager>();

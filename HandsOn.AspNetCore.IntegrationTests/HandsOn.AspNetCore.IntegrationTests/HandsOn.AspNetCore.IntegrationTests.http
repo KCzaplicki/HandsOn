@@ -1,6 +1,27 @@
-@HandsOn.AspNetCore.IntegrationTests_HostAddress = http://localhost:5095
+@baseUrl = http://localhost:5095
 
-GET {{HandsOn.AspNetCore.IntegrationTests_HostAddress}}/weatherforecast/
-Accept: application/json
+@cacheKey = "key1"
+@featureFlagKey = "Feature3"
 
-###
+### Get weather forecast
+
+GET {{baseUrl}}/weatherforecast
+
+### Get feature flags
+GET {{baseUrl}}/feature-flags
+
+### Get feature flag
+GET {{baseUrl}}/feature-flags/{{featureFlagKey}}
+
+### Set feature flag
+POST {{baseUrl}}/feature-flags/{{featureFlagKey}}
+
+true
+
+### Get cache key
+GET {{baseUrl}}/cache/{{cacheKey}}
+
+### Set cache key
+POST {{baseUrl}}/cache/{{cacheKey}}
+
+value
