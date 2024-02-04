@@ -10,7 +10,11 @@ public static class CacheEndpoints
     {
         var cacheEndpoints = app.MapGroup(CacheEndpointPrefix);
 
-        cacheEndpoints.MapGet("/{key}", async (IDistributedCache cache, string key) => await cache.GetStringAsync(key))
+        cacheEndpoints.MapGet("/{key}", async (IDistributedCache cache, string key) =>
+            {
+                var value = await cache.GetStringAsync(key);
+                return Results.Json(value);
+            })
             .WithName("GetCache")
             .WithOpenApi();
 
