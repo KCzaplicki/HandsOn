@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-Console.WriteLine("HandsOn.Console.RabbitMQ.Queue - Producer");
+﻿Console.WriteLine("HandsOn.Console.RabbitMQ.Queue - Producer");
 
 if (args.Length != 2)
 {

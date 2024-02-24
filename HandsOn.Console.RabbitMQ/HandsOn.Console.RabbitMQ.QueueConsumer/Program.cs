@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-Console.WriteLine("HandsOn.Console.RabbitMQ.Queue - Consumer");
+﻿Console.WriteLine("HandsOn.Console.RabbitMQ.Queue - Consumer");
 
 const string queueName = "basic_queue";
 
