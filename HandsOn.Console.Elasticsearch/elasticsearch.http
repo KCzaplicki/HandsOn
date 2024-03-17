@@ -1,0 +1,42 @@
+@baseUrl = http://localhost:9200
+
+@employeeIndex = employee_index
+
+### footprint
+GET {{baseUrl}}/
+
+### Get employee
+@id = 687a976d-344b-f662-426c-4f7ec7088fc6
+
+GET {{baseUrl}}/{{employeeIndex}}/_doc/{{id}}
+Content-Type: application/json
+
+### Search employee
+GET {{baseUrl}}/{{employeeIndex}}/_search
+Content-Type: application/json
+
+{
+  "size": 20,
+  "query": {
+    "wildcard": {
+      "jobTitle.keyword": {
+        "value": "Senior*"
+      }
+    }
+  }
+}
+
+### Get employees sorted by id
+GET {{baseUrl}}/{{employeeIndex}}/_search
+Content-Type: application/json
+
+{
+  "size": 10,
+  "sort": [
+    {
+      "id.keyword": {
+        "order": "asc"
+      }
+    }
+  ]
+}

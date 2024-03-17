@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.Elasticsearch", "HandsOn.Console.Elasticsearch\HandsOn.Console.Elasticsearch.csproj", "{0EF04D74-891B-48FD-96C5-10A6E0AFAB5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.Elasticsearch.Seed", "HandsOn.Console.Elasticsearch.Seed\HandsOn.Console.Elasticsearch.Seed.csproj", "{82712620-E45D-478D-B09C-83CFAED5319D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.Elasticsearch.Shared", "HandsOn.Console.Elasticsearch.Shared\HandsOn.Console.Elasticsearch.Shared.csproj", "{51EFB2AB-964E-49F9-A049-D18158B785DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0EF04D74-891B-48FD-96C5-10A6E0AFAB5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EF04D74-891B-48FD-96C5-10A6E0AFAB5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EF04D74-891B-48FD-96C5-10A6E0AFAB5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EF04D74-891B-48FD-96C5-10A6E0AFAB5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82712620-E45D-478D-B09C-83CFAED5319D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82712620-E45D-478D-B09C-83CFAED5319D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82712620-E45D-478D-B09C-83CFAED5319D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82712620-E45D-478D-B09C-83CFAED5319D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51EFB2AB-964E-49F9-A049-D18158B785DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51EFB2AB-964E-49F9-A049-D18158B785DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51EFB2AB-964E-49F9-A049-D18158B785DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51EFB2AB-964E-49F9-A049-D18158B785DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
