@@ -5,7 +5,7 @@ Console.WriteLine("HandsOn.Console.Elasticsearch - console app");
 
 var client = new ElasticsearchClient();
 
-const string index = "employee_index";
+const string index = "employee-index";
 const string searchJobTitle = "Senior*";
 
 var results = await client.SearchAsync<Employee>(s => s

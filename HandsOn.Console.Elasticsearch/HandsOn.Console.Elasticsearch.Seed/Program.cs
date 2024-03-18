@@ -5,7 +5,7 @@ Console.WriteLine("HandsOn.Console.Elasticsearch.Seed - seed data app");
 
 var client = new ElasticsearchClient();
 
-const string index = "employee_index";
+const string index = "employee-index";
 const int employeeCount = 10_000;
 
 var indexResponse = await client.Indices.CreateAsync(index);

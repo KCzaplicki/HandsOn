@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.Elasticsear
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.Elasticsearch.Shared", "HandsOn.Console.Elasticsearch.Shared\HandsOn.Console.Elasticsearch.Shared.csproj", "{51EFB2AB-964E-49F9-A049-D18158B785DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.Elasticsearch.Tests", "HandsOn.Console.Elasticsearch.Tests\HandsOn.Console.Elasticsearch.Tests.csproj", "{8226332C-4F01-42CB-BD5C-FB367CC932A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{51EFB2AB-964E-49F9-A049-D18158B785DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51EFB2AB-964E-49F9-A049-D18158B785DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51EFB2AB-964E-49F9-A049-D18158B785DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8226332C-4F01-42CB-BD5C-FB367CC932A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8226332C-4F01-42CB-BD5C-FB367CC932A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8226332C-4F01-42CB-BD5C-FB367CC932A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8226332C-4F01-42CB-BD5C-FB367CC932A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
