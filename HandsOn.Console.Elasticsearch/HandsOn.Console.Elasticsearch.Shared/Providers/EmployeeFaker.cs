@@ -1,7 +1,7 @@
 using Bogus;
 using HandsOn.Console.Elasticsearch.Shared.Models;
 
-namespace HandsOn.Console.Elasticsearch.Seed.Providers;
+namespace HandsOn.Console.Elasticsearch.Shared.Providers;
 
 public sealed class EmployeeFaker : Faker<Employee>
 {

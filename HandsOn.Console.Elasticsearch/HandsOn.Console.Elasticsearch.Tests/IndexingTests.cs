@@ -36,7 +36,7 @@ public class IndexingTests : IClassFixture<ElasticsearchFixture>
         var response = await _fixture.Client.Indices.CreateAsync(indexName);
         
         response.IsValidResponse.Should().BeFalse();
-        response.ElasticsearchServerError.Status.Should().Be(400);
+        response.ElasticsearchServerError!.Status.Should().Be(400);
         response.ElasticsearchServerError.Error.Type.Should().Be("invalid_index_name_exception");
     }
     
@@ -50,7 +50,7 @@ public class IndexingTests : IClassFixture<ElasticsearchFixture>
 
         response = await _fixture.Client.Indices.CreateAsync(indexName);
         response.IsValidResponse.Should().BeFalse();
-        response.ElasticsearchServerError.Status.Should().Be(400);
+        response.ElasticsearchServerError!.Status.Should().Be(400);
         response.ElasticsearchServerError.Error.Type.Should().Be("resource_already_exists_exception");
     }
 }

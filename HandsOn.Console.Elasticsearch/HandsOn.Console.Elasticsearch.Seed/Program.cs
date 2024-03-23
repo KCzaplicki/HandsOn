@@ -1,5 +1,5 @@
 ﻿using Elastic.Clients.Elasticsearch;
-using HandsOn.Console.Elasticsearch.Seed.Providers;
+using HandsOn.Console.Elasticsearch.Shared.Providers;
 
 Console.WriteLine("HandsOn.Console.Elasticsearch.Seed - seed data app");
 
