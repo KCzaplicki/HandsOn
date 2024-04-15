@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+#
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.WCFCore.Service", "HandsOn.Console.WCFCore.Service\HandsOn.Console.WCFCore.Service.csproj", "{047A18E8-1CBB-4886-8CEB-16994146874E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.WCFCore.Contracts", "HandsOn.Console.WCFCore.Contracts\HandsOn.Console.WCFCore.Contracts.csproj", "{A9C46DB3-3B2F-4218-821C-BF3F66BDF44F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOn.Console.WCFCore.Client", "HandsOn.Console.WCFCore.Client\HandsOn.Console.WCFCore.Client.csproj", "{2E7E09E2-B2C9-439C-ADB8-4DE676389140}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{047A18E8-1CBB-4886-8CEB-16994146874E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{047A18E8-1CBB-4886-8CEB-16994146874E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{047A18E8-1CBB-4886-8CEB-16994146874E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{047A18E8-1CBB-4886-8CEB-16994146874E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9C46DB3-3B2F-4218-821C-BF3F66BDF44F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9C46DB3-3B2F-4218-821C-BF3F66BDF44F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9C46DB3-3B2F-4218-821C-BF3F66BDF44F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9C46DB3-3B2F-4218-821C-BF3F66BDF44F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E7E09E2-B2C9-439C-ADB8-4DE676389140}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E7E09E2-B2C9-439C-ADB8-4DE676389140}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E7E09E2-B2C9-439C-ADB8-4DE676389140}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E7E09E2-B2C9-439C-ADB8-4DE676389140}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
